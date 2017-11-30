@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src="angular.min.js">
+
+  </script>
+  <title>Document</title>
+</head>
+<body ng-app="app"  ng-init="data='hello stark'">
+    <div class="" >
+        <input type="text" name="" value="" ng-model="data">
+        <div class="" ng-controller="main">
+            <span>{{data}}</span>
+        </div>
+    </div>
+</body>
+<script>
+  var app = angular.module('app',[]);
+  app.controller('main',function($scope){
+      console.log($scope.data);
+  })
+</script>
+</html>
