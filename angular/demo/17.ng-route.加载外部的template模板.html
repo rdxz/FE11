@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <script src="angular.min.js"></script> -->
+  <script src="https://cdn.bootcss.com/angular.js/1.4.11/angular.min.js"></script>
+  <script src="https://cdn.bootcss.com/angular.js/1.4.11/angular-route.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div ng-app="app">
+      <head>
+        <h2>页面头部</h2>
+      </head>
+
+      <div ng-view>
+        
+      </div>
+
+  </div>
+</body>
+<script>
+  var app = angular.module('app', ['ngRoute']);
+  app.config(function ($routeProvider) {
+      $routeProvider
+      .when('/',{
+        template:'<h1> 今天天气不错哦！就是有点冷 {{msg}}</h1>',
+        controller:function($scope){
+          $scope.msg = 'stark';
+        }
+      })
+      .when('/stark', {
+        template: '<h1> my name is  {{name}}</h1>',
+        controller: function ($scope) {
+          $scope.name = 'stark.wang';
+        }
+      })
+      .when('/shudong', {
+        template: '<h1> this is  {{name}}</h1>',
+        controller: function ($scope) {
+          $scope.name = 'shudong page';
+        }
+      })
+      .when('/wang', {
+        templateUrl:'stark.html',
+        // 需要在服务器上面运行，就是localhost方式
+        controller: function ($scope) {
+          $scope.stark = '外部引入的url';
+        }
+      })
+  })
+</script>
+
+</html>

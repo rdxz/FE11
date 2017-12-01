@@ -4,17 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="angular.min.js">
+
+  </script>
   <title>Document</title>
 </head>
-<body>
-    显示隐藏
+<body ng-app="app">
+    <!-- 显示隐藏
     <button>toggle</button>
     点击toggle按钮实现 下面两个页面显示隐藏切换
     <div> 第一个页面</div>
     <div>第二个页面</div>
 
     ng-hide
-    ng-show
+    ng-show -->
 
+    <div ng-controller="main">
+        <button ng-click="toggle()" type="button" name="button">toggle</button>
+        <div class="" ng-show="showPage">
+          第一个页面
+        </div>
+        <div class="" ng-hide="showPage">
+          第二个页面
+        </div>
+    </div>
 </body>
+<script>
+  var app = angular.module('app',[]);
+  app.controller('main',function($scope){
+      $scope.showPage = true;
+      $scope.toggle = function(){
+        this.showPage = !this.showPage;
+      }
+  })
+
+</script>
 </html>

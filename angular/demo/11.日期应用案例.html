@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="angular.min.js"></script>
+  <title>Document</title>
+</head>
+
+<!-- 2017年12月1日 10:11 -->
+<body>
+<body>
+  <div ng-app="app">
+    <div ng-controller="main">
+        <p>{{date | date: 'yyyy年MM月dd日 hh:mm'}}</p>
+
+        <p>{{apiDate | date: 'yyyy年MM月dd日 hh:mm'}}</p>
+    </div>
+  </div>
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.controller('main', function ($scope) {
+    $scope.date = new Date();
+    $scope.apiDate = 1512093191 * 1000;
+  })
+</script>
+
+</html>
