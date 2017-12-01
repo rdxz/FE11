@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="angular.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div ng-app="app">
+      <div my-title> </div>
+      <div class="my-title"> </div>
+      <my-title> </my-title>
+      <!-- directive:my-title -->
+  </div>
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.directive('myTitle',function(){
+    return {
+      restrict:'ECMA',
+      template:'<h1> hello stark </h1>',
+      replace:true
+    }
+  })
+</script>
+
+</html>

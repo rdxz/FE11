@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="angular.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div ng-app="app">
+    <div ng-controller="main">
+
+    </div>
+  </div>
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.controller('main',['$scope','$http', function ($scope, $http) {
+    // $scope.width = 100;
+    $http.get('http://h6.duchengjiu.top/shop/api_cat.php').then(function (data) {
+        console.log(data);
+    },function(data) {
+      console.log('发生了一些错误');
+    })
+  }])
+</script>
+
+</html>

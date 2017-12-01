@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="angular.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div ng-app="app">
+    <div ng-controller="main">
+        <input ng-model="stark" ng-keyup="" type="" name="" value="">
+        <div>
+          {{shudong}} 
+        </div>
+        <div>
+          {{stark}}
+        </div>
+    </div>
+  </div>
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.controller('main', function ($scope) {
+    $scope.stark = 100;
+    $scope.shudong= 0;
+    $scope.wang= 10;
+
+    $scope.$watch('stark',function(){
+      $scope.shudong = $scope.stark * 2;
+    })
+  })
+</script>
+
+</html>
