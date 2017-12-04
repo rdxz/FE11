@@ -7,7 +7,9 @@ angular.module('controllers').controller('ActivityCtrl', [
   ){
 
     $ActivityManage.fetchAct().then(function(data){
-        console.log(data)
+        console.log(data);
+        console.log(data);
+
     })
 
 }])

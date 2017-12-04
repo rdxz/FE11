@@ -8,9 +8,7 @@ app.config(function ($routeProvider) {
     })
     .when('/stark', {
       template: '<h1> my name is  {{name}}</h1>',
-      controller: function ($scope) {
-        $scope.name = 'stark.wang';
-      }
+      controller:'StarkCtrl'
     })
     .when('/shudong', {
       template: '<h1> this is  {{name}}</h1>',

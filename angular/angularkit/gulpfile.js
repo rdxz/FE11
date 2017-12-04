@@ -51,6 +51,11 @@ gulp.task('serve',function(){
   })
 })
 
+gulp.task('watch',function() {
+  gulp.watch('./src/script/**/*.js',['script']);
+  // gulp.watch('./src/srcipt/*.js',['script']);
+  gulp.watch('./src/view/**/*.html', ['template']);
+})
 
 gulp.task('template',function(){
   gulp.src('./src/view/**/*.html')
@@ -59,11 +64,29 @@ gulp.task('template',function(){
   .pipe(gulp.dest(app.distPath + 'view'))
 })
 
+
+
+// 读取gulp里面的所有js文件
+fs.readdirSync('./gulp').filter(function (file) {
+  return (/\.(js|ts|es)$/i).test(file);
+}).map(function (file) {
+  // console.log(file);
+  require('./gulp/' + file);
+})
+
+
 gulp.task('dev',[
   'copy-bundle',
   'script',
   'template',
-  'serve'
+  'serve',
+  'watch'
+])
+
+gulp.task('dist',[
+  'copy-bundle',
+  'script',
+  'template',
 ])
 
 
