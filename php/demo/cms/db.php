@@ -3,6 +3,16 @@ $user = 'root';
 $pass = '';
 $dbh = new PDO('mysql:host=localhost;dbname=fe11', $user, $pass);
 session_start();
+
+
+$status = [
+  1 => '非常明白',
+  2 => '比较明白',
+  3 => '一般明白',
+  4 => '懵逼'
+];
+
+
 // print_r($dbh);
 
 // $sql = "select * from user";

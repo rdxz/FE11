@@ -14,7 +14,7 @@
 </div>
 
 
-  <form action="login.php">
+  <form action="login.php" method="post">
   <div class="form-group">
     <label for="exampleInputEmail1">用户名</label>
     <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="用户名">

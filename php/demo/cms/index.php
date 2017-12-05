@@ -1,3 +1,13 @@
+<?php
+    require_once('db.php');
+    // var_dump($_SESSION);
+    // die;
+    if(empty($_SESSION)){
+      echo '你还没有登录！';
+      header('Location:login_page.php');
+      return false;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,32 +32,29 @@
       <a class="navbar-brand" href="#">Brand</a>
     </div>
 
+
+
+
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="#">留言板 <span class="sr-only">(current)</span></a></li>
         <li><a href="#">状态</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
       </ul>
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
+        <li><a href="#">
+          用户名：
+          <?php
+            echo $_SESSION['name'];
+          ?>
+        </a></li>
+
+        <li><a href="#">
+          状态：
+          <?php
+            echo $status[$_SESSION['status']];
+          ?>
+        </a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -64,31 +71,65 @@
 </nav>
   </head>
 
+
+
+
+
+    留言板
+<div class="container-fluid">
+<div class="col-md-6">
+  
+
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">标题</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputEmail3" placeholder="title">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">内容</label>
+        <div class="col-sm-10">
+      <textarea class="form-control" rows="3"></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">提交留言</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+留言信息
+
+</div>
   <div class="container">
     学习的状态：
       <form action="status.php" method="post">
 
       <div class="radio">
       <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+        <input type="radio" name="status" id="optionsRadios1" value="1" checked>
         非常明白
       </label>
     </div>
     <div class="radio">
       <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+        <input type="radio" name="status" id="optionsRadios2" value="2">
         比较明白
       </label>
     </div>
     <div class="radio">
       <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+        <input type="radio" name="status" id="optionsRadios3" value="3">
         一般明白
       </label>
     </div>
     <div class="radio">
       <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios4" value="option3">
+        <input type="radio" name="status" id="optionsRadios4" value="4">
         懵逼
       </label>
     </div>

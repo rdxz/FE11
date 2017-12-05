@@ -18,9 +18,12 @@ if (empty($user)) {
     return false;
 }
 
+// var_dump(  $user);
+// die;
 if(md5($password) == $user['password']){
   echo '登录成功';
-  $_SESSION['name'] == $user['name'];
+  $_SESSION['name'] = $name;
+  $_SESSION['status'] = $user['status'];
   header('Location:index.php');
 }else{
   echo '密码错误';
