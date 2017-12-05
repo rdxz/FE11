@@ -26,3 +26,8 @@ if ($result) {
   echo  json_encode($res);
 }
 
+$user_list = "select * from user";
+foreach ($dbh->query($user_list) as $key => $value) {
+    // echo "<pre>";
+    // print_r($value['name']);
+}
