@@ -1,4 +1,5 @@
 <?php
+require_once('api/ZhiHuDaily.php');
 function checkSignature()
 {
 
@@ -88,32 +89,44 @@ echo $str;
 
 // 测试图文消息
 
-if (!empty($xml->Content)) {
-    $data = [
-        [
-        'title' => '安琪拉',
-        'url' => 'http://stark.wang',
-        'picurl' => 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1513221767&di=112afbccd30f26c20392a7dfff06926a&imgtype=jpg&er=1&src=http%3A%2F%2Fqtimg.bdstatic.com%2Fhiapk%2Fgame%2F201707%2F04%2F595af6d2285d9.jpg',
-        'desc' => 'hi 安琪拉！！！'
-        ],
-        [
-        'title' => '李白，今朝有酒今朝醉',
-        'url' => 'http://stark.wang',
-        'picurl' => 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1512627415601&di=a48be9abc9661620472cf49c9388f221&imgtype=0&src=http%3A%2F%2Fi1.17173cdn.com%2F2fhnvk%2FYWxqaGBf%2Fcms3%2FXivJLTbldqzvDcv.jpg',
-        'desc' => '今朝有酒今朝醉，李白就是一个诗人'
-        ],
-        [
-        'title' => '钟馗',
-        'url' => 'http://stark.wang',
-        'picurl' => 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1513222223&di=40ac217b31655f2dee782c8be7c67aa4&imgtype=jpg&er=1&src=http%3A%2F%2Fzhidao.3533.com%2Fuploads%2Fanswer%2F20160324%2F34c6cc35fe42f302e4c96b9984f55c5e.jpg',
-        'desc' => '哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈'
-        ],
-];
+// if (!empty($xml->Content)) {
+//     $data = [
+//         [
+//         'title' => '安琪拉',
+//         'url' => 'http://stark.wang',
+//         'picurl' => 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1513221767&di=112afbccd30f26c20392a7dfff06926a&imgtype=jpg&er=1&src=http%3A%2F%2Fqtimg.bdstatic.com%2Fhiapk%2Fgame%2F201707%2F04%2F595af6d2285d9.jpg',
+//         'desc' => 'hi 安琪拉！！！'
+//         ],
+//         [
+//         'title' => '李白，今朝有酒今朝醉',
+//         'url' => 'http://stark.wang',
+//         'picurl' => 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1512627415601&di=a48be9abc9661620472cf49c9388f221&imgtype=0&src=http%3A%2F%2Fi1.17173cdn.com%2F2fhnvk%2FYWxqaGBf%2Fcms3%2FXivJLTbldqzvDcv.jpg',
+//         'desc' => '今朝有酒今朝醉，李白就是一个诗人'
+//         ],
+//         [
+//         'title' => '钟馗',
+//         'url' => 'http://stark.wang',
+//         'picurl' => 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1513222223&di=40ac217b31655f2dee782c8be7c67aa4&imgtype=jpg&er=1&src=http%3A%2F%2Fzhidao.3533.com%2Fuploads%2Fanswer%2F20160324%2F34c6cc35fe42f302e4c96b9984f55c5e.jpg',
+//         'desc' => '哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈'
+//         ],
+// ];
     
-    replyArticle($data);
+    // replyArticle($data);
+// }
+
+if ($xml->Content == '知乎日报') {
+    $res = Daily::GetDail();
+    $data = [];
+    foreach ($res as $key => $value) {
+        $data[] = [
+            'title' => $value['title'],
+            'url' => 'http://stark.wang',
+            'picurl' => $value['images'][0],
+            'desc' => $value['title']
+        ];
+    }
+    replyArticle(array_slice($data,1,8));
 }
-
-
 
 // <xml>
 
